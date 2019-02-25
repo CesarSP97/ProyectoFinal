@@ -1,0 +1,15 @@
+<div class="col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
+	<form class="form-signin" action="/{{route}}/reset/{{token}}" method="post" role="form" data-toggle="validator">
+		<h2 class="form-signin-heading">Restablecer Contraseña</h2>
+		<div class="form-group">
+            <label for="user_password">Contraseña *</label>
+            <input type="password" class="form-control" id="user_password" name="password" placeholder="Contraseña" required>
+        </div>
+        <div class="form-group">
+            <label for="frm_user_password_confirm">Confirmar contraseña *</label>
+            <input type="password" data-match="#user_password" placeholder="Confirmar contraseña" class="form-control" name="frm_user_password_confirm" required>
+        </div>
+		<button class="btn btn-lg btn-success btn-block" type="submit">Actualizar contraseña</button>
+        </br>
+	</form>
+</div>

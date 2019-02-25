@@ -1,0 +1,66 @@
+{{> partials/menu}}
+<div class="col-lg-9">
+    <div class="col-lg-12">
+        <h2>Pedidos</h2>
+    </div>
+    <div class="col-lg-12 search_bar">
+        <div class="input-group">
+            <input type="text" name="order_filter" id="order_filter" class="form-control input-lg" placeholder="Filtrar pedido">
+            <span class="input-group-btn">
+                <button class="btn btn-success btn-lg" id="btn_order_filter">Filtrar</button>
+                <a href="/admin/orders/bystatus/" class="hidden-xs btn btn-info btn-lg orderFilterByStatus">By status</a>
+                <a href="/admin/orders" class="hidden-xs btn btn-warning btn-lg"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </span>
+        </div>
+        <div class="orderFilter">
+            <div class="text-warning top-pad-10 col-md-8">Los pedidos pueden ser filtrados por: apellido, correo electronico o codigo postal</div>
+            <div class="col-md-4 no-pad-right">
+                <div class="form-group">
+                    <label for="orderStatusFilter" class="col-sm-2 control-label formLabel">Estado</label>
+                    <div class="col-sm-10 no-pad-right">
+                        <select class="form-control input-sm" id="orderStatusFilter">
+                            <option>Completado</option>
+                            <option>Pagado</option>
+                            <option>Creado</option>
+                            <option>Cancelado</option>
+                            <option>Rechazado</option>
+                            <option>Enviado</option>
+                            <option>Pendiente</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 top-pad-10">
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{#if searchTerm}}
+                    <strong>Pedidos - <span class="text-danger">Filtered term: {{searchTerm}} </span></strong>
+                {{else}}
+                    <strong>Pedidos Recientes</strong>
+                {{/if}}
+            </li>
+            {{#if orders}}
+            {{#each orders}}
+                <li class="list-group-item">
+                    <h4 class="pull-right" style="padding-left: 10px;">
+                        Estado: <span class="text-{{getStatusColor this.orderStatus}}">{{this.orderStatus}}</span>
+                        <a class="text-danger" href="/admin/order/delete/{{this._id}}" onclick="return confirm('Are you sure you want to delete this order?');"> <i class="fa fa-trash-o"></i></a>
+                    </h4>
+                    <h5>
+                        <a href="/admin/order/view/{{this._id}}">Ver pedido</a> - <span class="text-info">Fecha: </span>{{formatDate this.orderDate "DD/MM/YYYY hh:mm"}} | <span class="text-info">Correo:</span> {{this.orderEmail}} | <span class="text-info">Apellidos:</span> {{this.orderLastname}}
+                    </h5>
+                </li>
+            {{/each}}
+            {{else}}
+                <li class="list-group-item">
+                    <h4 class="text-center">
+                        No se han encontrado Pedidos!
+                    </h4>
+                </li>
+            {{/if}}
+        </ul>
+    </div>
+</div>

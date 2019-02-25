@@ -1,0 +1,49 @@
+{{> partials/menu}}
+<div class="col-lg-9">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Cliente</h2>
+        </div>
+        <div class="col-xs-12 col-md-12">
+            <table class="table-bordered">
+                <tr>
+                    <td><span class="text-info">Correo:</span></td>
+                    <td>{{result.email}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Nombre:</span></td>
+                    <td>{{result.firstName}} {{result.lastName}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Direccion 1:</span></td>
+                    <td>{{result.address1}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Direccion 2:</span></td>
+                    <td>{{result.address2}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Ciudad:</span></td>
+                    <td>{{result.country}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Estado:</span></td>
+                    <td>{{result.state}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Codigo Postal:</span></td>
+                    <td>{{result.postcode}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Numero de telefono:</span></td>
+                    <td>{{result.phone}}</td>
+                </tr>
+                <tr>
+                    <td><span class="text-info">Fecha de creacion:</span></td>
+                    <td>{{formatDate result.created "DD/MM/YYYY hh:mmA"}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <input type="hidden" id="productId" value="{{result._id}}">
+</div>
